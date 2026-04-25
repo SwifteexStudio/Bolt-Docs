@@ -1,0 +1,38 @@
+site_name: Bolt Runtime Engine Documentation
+site_description: Official documentation for the Bolt programming language
+site_author: Swifteex Studio
+
+site_url: https://SwifteexStudio.github.io/Swifteex/docs/
+
+docs_dir: main
+site_dir: site
+
+use_directory_urls: true
+
+nav:
+  - Native syntax: index.md
+  - Usage of modules in bolt: modules.md
+  - Bfile: bfiledocs.md
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
+  - codehilite
+
+extra:
+  homepage: /Swifteex/docs/
