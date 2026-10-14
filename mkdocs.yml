@@ -2,7 +2,7 @@ site_name: Bolt Runtime Engine Documentation
 site_description: Official documentation for the Bolt programming language
 site_author: Swifteex Studio
 
-site_url: https://SwifteexStudio.github.io/bolt-docs/
+site_url: https://https://boltdocumentation.vercel.app/
 
 docs_dir: main
 site_dir: site
