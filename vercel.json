@@ -1,0 +1,6 @@
+
+{
+  "buildCommand": "python -m venv .venv && .venv/bin/python -m pip install mkdocs-material && .venv/bin/python -m mkdocs build",
+  "outputDirectory": "main/site"
+}
+
