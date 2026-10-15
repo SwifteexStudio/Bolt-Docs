@@ -1,0 +1,1743 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for the BOLT programming language">
+      
+      
+        <meta name="author" content="Swifteex Studio">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../modules/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>BFile - BOLT Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bfile-module-official-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="BOLT Documentation" class="md-header__button md-logo" aria-label="BOLT Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            BOLT Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BFile
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="BOLT Documentation" class="md-nav__button md-logo" aria-label="BOLT Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    BOLT Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BFile
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BFile
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-bfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing Bfile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-local-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The local Keyword
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safe-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Identifiers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfileread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilewrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilewritefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.writefile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileappend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.append
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileisfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.isfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileisdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.isdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilelistdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.listdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.remove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilermdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.rmdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilermtree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.rmtree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilecopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.copy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilemkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.mkdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilejoinpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.joinpath
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-platform-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Platform Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table of Contents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importing-bfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importing Bfile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-local-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The local Keyword
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safe-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Safe Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Identifiers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bfileread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilewrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilewritefile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.writefile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileappend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.append
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileexists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.exists
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileisfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.isfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileisdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.isdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilelistdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.listdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfileremove" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.remove
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilermdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.rmdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilermtree" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.rmtree
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilecopy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.copy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilemkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.mkdir
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bfilejoinpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bfile.joinpath
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error Handling Patterns
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-platform-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Platform Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="bfile-module-official-reference">Bfile Module — Official Reference</h1>
+<p><strong>Module:</strong> <code>bfile</code>
+<strong>Type:</strong> Core Built-in
+<strong>Available in:</strong> Bolt v1.70+
+<strong>Recommended:</strong> Bolt v2.0.0+
+<strong>Synchronicity:</strong> Fully synchronous (blocking I/O)</p>
+<hr />
+<p>Bfile is the official filesystem module bundled directly into the Bolt runtime. It provides a clean, safe, and portable API for reading, writing, appending, copying, and managing files and directories — without requiring any external libraries or manual stream handling. All operations are synchronous and return values immediately.</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#importing-bfile">Importing Bfile</a></li>
+<li><a href="#the-local-keyword">The <code>local</code> Keyword</a></li>
+<li><a href="#safe-mode">Safe Mode</a></li>
+<li><a href="#error-identifiers">Error Identifiers</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#bfileread">bfile.read</a></li>
+<li><a href="#bfilewrite">bfile.write</a></li>
+<li><a href="#bfilewritefile">bfile.writefile</a></li>
+<li><a href="#bfileappend">bfile.append</a></li>
+<li><a href="#bfileexists">bfile.exists</a></li>
+<li><a href="#bfileisfile">bfile.isfile</a></li>
+<li><a href="#bfileisdir">bfile.isdir</a></li>
+<li><a href="#bfilelistdir">bfile.listdir</a></li>
+<li><a href="#bfileremove">bfile.remove</a></li>
+<li><a href="#bfilermdir">bfile.rmdir</a></li>
+<li><a href="#bfilermtree">bfile.rmtree</a></li>
+<li><a href="#bfilecopy">bfile.copy</a></li>
+<li><a href="#bfilemkdir">bfile.mkdir</a></li>
+<li><a href="#bfilejoinpath">bfile.joinpath</a></li>
+<li><a href="#error-handling-patterns">Error Handling Patterns</a></li>
+<li><a href="#cross-platform-notes">Cross-Platform Notes</a></li>
+</ul>
+<hr />
+<h2 id="importing-bfile">Importing Bfile</h2>
+<p>Bfile must be explicitly loaded before use. Use the <code>$get</code> directive at the top of your script.</p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+</code></pre></div>
+<p>This directive links all <code>bfile.*</code> functions into the current execution context. Calling any <code>bfile.*</code> function without this directive will raise a runtime module error.</p>
+<p><strong>Version check:</strong>
+If your runtime is below v1.70, the directive will fail silently or throw an import error. Verify your version:</p>
+<div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--version
+</code></pre></div>
+<hr />
+<h2 id="the-local-keyword">The <code>local</code> Keyword</h2>
+<p>Bfile introduces a special path keyword: <code>local</code>.</p>
+<p>When <code>local</code> is passed as a path argument to any bfile function, it resolves to <strong>the directory containing the currently running script</strong> — not the working directory from which the <code>bolt</code> command was invoked.</p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# These two calls are equivalent when running from C:\projects\app\
+content = bfile.read("C:\projects\app\config.txt")
+content = bfile.read(local + "\config.txt")
+</code></pre></div>
+<p><strong>Fallback behaviour:</strong> If the script has no known source path (e.g., it was passed as an inline string via the REPL or <code>bolt -e</code>), <code>local</code> resolves to the current working directory (<code>os.getcwd()</code>).</p>
+<p><strong>Usage with joinpath (recommended):</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+config_path = bfile.joinpath(local, "config", "settings.json")
+data = bfile.read(config_path)
+sys.out data
+</code></pre></div>
+<p><code>local</code> works as a first-class value anywhere a path string is accepted.</p>
+<hr />
+<h2 id="safe-mode">Safe Mode</h2>
+<p>Bfile respects the Bolt interpreter's <strong>safe mode</strong> flag. When the interpreter is started in safe mode, all file operations are restricted to the directory of the running script.</p>
+<p><strong>Restrictions in safe mode:</strong></p>
+<ul>
+<li>Read, write, append, copy, list, and remove operations must target paths <strong>within</strong> the script's own directory tree.</li>
+<li>Attempting to access paths outside that tree raises a <code>RuntimeError</code> immediately.</li>
+<li>Overwriting the running script itself is also blocked.</li>
+</ul>
+<p><strong>Error raised:</strong></p>
+<div class="highlight"><pre><span></span><code>File access to '/etc/passwd' is disallowed in safe mode.
+</code></pre></div>
+<p>Safe mode is intended for sandboxed or untrusted script execution environments. There is no bfile-level API to toggle safe mode — it is set at the interpreter level.</p>
+<hr />
+<h2 id="error-identifiers">Error Identifiers</h2>
+<p>Bfile uses a three-value error namespace accessible at <code>bfile.error</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Identifier</th>
+<th>Value String</th>
+<th>When Raised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bfile.error.FileNotFound</code></td>
+<td><code>"bfile.error.FileNotFound"</code></td>
+<td>Target file does not exist</td>
+</tr>
+<tr>
+<td><code>bfile.error.AccessDenied</code></td>
+<td><code>"bfile.error.AccessDenied"</code></td>
+<td>OS-level permission denied</td>
+</tr>
+<tr>
+<td><code>bfile.error.IOError</code></td>
+<td><code>"bfile.error.IOError"</code></td>
+<td>All other I/O failures</td>
+</tr>
+</tbody>
+</table>
+<p>These string values are embedded in all exception messages raised by bfile functions, making them parseable in error-handling logic or log filtering.</p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+result = bfile.read("missing.txt")
+# If the file is missing, the runtime throws:
+# RuntimeError: bfile.error.FileNotFound: File not found: 'missing.txt'
+</code></pre></div>
+<p>Use <code>--debug</code> for full stack traces:</p>
+<div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--debug<span class="w"> </span>--run<span class="w"> </span>script.bolt
+</code></pre></div>
+<hr />
+<h2 id="functions">Functions</h2>
+<hr />
+<h3 id="bfileread">bfile.read</h3>
+<p>Reads the full contents of a file and returns them as a string.</p>
+<div class="highlight"><pre><span></span><code>bfile.read(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the file. Accepts absolute paths, relative paths, or <code>local</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>string</code> — the raw file contents including all whitespace and newlines.</p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.FileNotFound</code> if the file does not exist.</li>
+<li><code>bfile.error.AccessDenied</code> if the OS denies the read.</li>
+<li><code>bfile.error.IOError</code> for all other failures.</li>
+</ul>
+<p><strong>Behaviour note:</strong> If the return value is not assigned to a variable, the content is printed directly to <code>sys.out</code>.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Read and print a file
+bfile.read("readme.txt")
+
+# Read into a variable
+content = bfile.read("readme.txt")
+sys.out content
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Read using the local keyword
+notes = bfile.read(local + "/notes.txt")
+sys.out notes
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Read and check contents
+data = bfile.read("users.txt")
+if "admin" in data
+    sys.out "Admin record found"
+else
+    sys.out "No admin record"
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfilewrite">bfile.write</h3>
+<p>Writes data to a new file constructed from a directory, filename, and extension. <strong>Overwrites</strong> the file if it already exists.</p>
+<div class="highlight"><pre><span></span><code>bfile.write(data, directory, filename, extension)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>any</td>
+<td>Yes</td>
+<td>The content to write. Converted to string automatically.</td>
+</tr>
+<tr>
+<td><code>directory</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Target directory. Accepts absolute path, relative path, or <code>local</code>.</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>The base filename without extension.</td>
+</tr>
+<tr>
+<td><code>extension</code></td>
+<td>string or type literal</td>
+<td>Yes</td>
+<td>File extension. A leading <code>.</code> is added automatically if omitted.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> on write failure.</li>
+<li>Safe mode error if the resolved path is outside the script directory.</li>
+</ul>
+<p><strong>Extension handling:</strong> The extension parameter accepts both plain strings (<code>"txt"</code>, <code>".txt"</code>) and Bolt type literals (<code>.txt</code>). In all cases, a single leading <code>.</code> is guaranteed.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Write a plain text file to the script directory
+bfile.write("Hello, world!", local, "output", "txt")
+# Creates: &lt;script_dir&gt;/output.txt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+username = "Ariyan"
+report = "User: " + username + " logged in."
+bfile.write(report, local, "log", ".log")
+# Creates: &lt;script_dir&gt;/log.log
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Write with a constructed directory
+bfile.write("data here", local + "/exports", "result", "csv")
+# Creates: &lt;script_dir&gt;/exports/result.csv
+</code></pre></div>
+<hr />
+<h3 id="bfilewritefile">bfile.writefile</h3>
+<p>Writes data to a specific, fully-specified file path. <strong>Overwrites</strong> the file if it already exists. This is the simpler alternative to <code>bfile.write</code> when you already have a complete path.</p>
+<div class="highlight"><pre><span></span><code>bfile.writefile(path, data)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Full path to the target file. Accepts <code>local</code>, absolute, or relative paths.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>any</td>
+<td>Yes</td>
+<td>The content to write. Converted to string automatically.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> on write failure.</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+bfile.writefile(local + "/config.txt", "debug=true")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+path = bfile.joinpath(local, "output", "result.txt")
+bfile.writefile(path, "Final result: 42")
+</code></pre></div>
+<hr />
+<h3 id="bfileappend">bfile.append</h3>
+<p>Appends data to an existing file. If the file does not exist, it is <strong>created</strong>.</p>
+<div class="highlight"><pre><span></span><code>bfile.append(path, data)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the target file. Accepts <code>local</code>, absolute, or relative.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>any</td>
+<td>Yes</td>
+<td>The content to append. Converted to string automatically.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> on append failure.</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Note:</strong> No newline is appended automatically. If you want each append on a new line, include <code>"\n"</code> in your data.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+bfile.append(local + "/log.txt", "Session started\n")
+bfile.append(local + "/log.txt", "User connected\n")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Build a log entry
+entry = "[INFO] Operation completed\n"
+bfile.append(local + "/events.log", entry)
+</code></pre></div>
+<hr />
+<h3 id="bfileexists">bfile.exists</h3>
+<p>Checks whether a file or directory exists at the given path.</p>
+<div class="highlight"><pre><span></span><code>bfile.exists(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to check. Accepts <code>local</code>, absolute, or relative.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>bool</code> — <code>true</code> if the path exists (file or directory), <code>false</code> otherwise.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+if bfile.exists(local + "/config.txt")
+    sys.out "Config found"
+else
+    sys.out "Config missing — using defaults"
+end.if
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+target = local + "/data/output.csv"
+if bfile.exists(target)
+    bfile.remove(target)
+end.if
+bfile.writefile(target, "col1,col2\n")
+</code></pre></div>
+<hr />
+<h3 id="bfileisfile">bfile.isfile</h3>
+<p>Checks whether a path exists <strong>and</strong> refers specifically to a file (not a directory or symlink to a directory).</p>
+<div class="highlight"><pre><span></span><code>bfile.isfile(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to check.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>bool</code></p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+path = local + "/data.json"
+if bfile.isfile(path)
+    content = bfile.read(path)
+    sys.out content
+else
+    sys.out "Not a file"
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfileisdir">bfile.isdir</h3>
+<p>Checks whether a path exists <strong>and</strong> refers specifically to a directory.</p>
+<div class="highlight"><pre><span></span><code>bfile.isdir(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to check.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>bool</code></p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+target_dir = local + "/exports"
+if bfile.isdir(target_dir)
+    sys.out "Export directory ready"
+else
+    bfile.mkdir(target_dir)
+    sys.out "Export directory created"
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfilelistdir">bfile.listdir</h3>
+<p>Returns a list of names (files and subdirectories) inside a directory.</p>
+<div class="highlight"><pre><span></span><code>bfile.listdir()
+bfile.listdir(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>No</td>
+<td><code>local</code></td>
+<td>Directory to list. Defaults to the script's own directory.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>list</code> of strings — the names of entries in the directory (not full paths).</p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> if the directory cannot be listed (e.g., does not exist or no permission).</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Note:</strong> Entries are names only, not full paths. Use <code>bfile.joinpath</code> to construct full paths from results.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# List the script's own directory
+entries = bfile.listdir()
+sys.out entries
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# List a subdirectory
+files = bfile.listdir(local + "/assets")
+sys.out files
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Check if a specific file is present
+entries = bfile.listdir()
+if "config.bolt" in entries
+    sys.out "Config script detected"
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfileremove">bfile.remove</h3>
+<p>Removes a single file at the given path. <strong>Silently succeeds</strong> if the file does not exist.</p>
+<div class="highlight"><pre><span></span><code>bfile.remove(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the file to delete.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> on OS-level failure (e.g., path is a directory, permission denied).</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Note:</strong> This function only removes files. To remove directories, use <code>bfile.rmdir</code> or <code>bfile.rmtree</code>.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+bfile.remove(local + "/temp.txt")
+sys.out "Cleanup complete"
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+old_log = local + "/logs/session_old.log"
+if bfile.isfile(old_log)
+    bfile.remove(old_log)
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfilermdir">bfile.rmdir</h3>
+<p>Removes a <strong>single, empty</strong> directory. Fails if the directory contains any files or subdirectories.</p>
+<div class="highlight"><pre><span></span><code>bfile.rmdir(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the empty directory to remove.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> if the directory is not empty or cannot be removed.</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Silently succeeds</strong> if the directory does not exist.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+bfile.rmdir(local + "/tmp_empty")
+</code></pre></div>
+<p>To remove a directory with contents, use <code>bfile.rmtree</code>.</p>
+<hr />
+<h3 id="bfilermtree">bfile.rmtree</h3>
+<p>Recursively removes a directory <strong>and all of its contents</strong> — files, subdirectories, and nested structures. This is a destructive operation with no undo.</p>
+<div class="highlight"><pre><span></span><code>bfile.rmtree(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the root directory to remove recursively.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> on failure.</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Silently succeeds</strong> if the directory does not exist.</p>
+<p><strong>Warning:</strong> This permanently deletes everything inside the target directory. There is no confirmation prompt or recycle bin. Use with care.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Wipe and recreate a build directory
+bfile.rmtree(local + "/build")
+bfile.mkdir(local + "/build")
+sys.out "Build directory reset"
+</code></pre></div>
+<hr />
+<h3 id="bfilecopy">bfile.copy</h3>
+<p>Copies a file from a source path to a destination path. Preserves file metadata (timestamps, permissions) using the underlying <code>copy2</code> mechanism.</p>
+<div class="highlight"><pre><span></span><code>bfile.copy(src_path, dest_path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src_path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the source file.</td>
+</tr>
+<tr>
+<td><code>dest_path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path to the destination (file path or directory).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> if the copy fails for any reason.</li>
+<li>Safe mode errors apply independently to both <code>src_path</code> and <code>dest_path</code>.</li>
+</ul>
+<p><strong>Behaviour:</strong> If <code>dest_path</code> is an existing directory, the file is copied into it using the source filename. If <code>dest_path</code> is a full file path, it is used as the output filename.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Copy a config file to a backup
+bfile.copy(local + "/config.txt", local + "/config.bak")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Copy a file into a subdirectory
+bfile.mkdir(local + "/backup")
+bfile.copy(local + "/data.json", local + "/backup")
+# Result: &lt;script_dir&gt;/backup/data.json
+</code></pre></div>
+<hr />
+<h3 id="bfilemkdir">bfile.mkdir</h3>
+<p>Creates a directory at the given path. <strong>Automatically creates all missing parent directories.</strong> Silently succeeds if the directory already exists.</p>
+<div class="highlight"><pre><span></span><code>bfile.mkdir(path)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>path</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Path of the directory to create. Supports nested paths.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>null</code></p>
+<p><strong>Errors raised:</strong></p>
+<ul>
+<li><code>bfile.error.IOError</code> if creation fails (e.g., a file already exists at that path).</li>
+<li>Safe mode error if path is outside the script directory.</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Create a single directory
+bfile.mkdir(local + "/output")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Create a deeply nested directory structure in one call
+bfile.mkdir(local + "/output/reports/2025/q1")
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Conditional creation
+if !bfile.isdir(local + "/cache")
+    bfile.mkdir(local + "/cache")
+end.if
+</code></pre></div>
+<hr />
+<h3 id="bfilejoinpath">bfile.joinpath</h3>
+<p>Joins multiple path components into a single well-formed path string, handling separators automatically across platforms.</p>
+<div class="highlight"><pre><span></span><code>bfile.joinpath(part1, part2, ...)
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>part1, part2, ...</code></td>
+<td>string (variadic)</td>
+<td>At least one recommended</td>
+<td>Path components to join. The first component may be <code>local</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Returns:</strong> <code>string</code> — a joined path string using the OS-appropriate separator.</p>
+<p><strong>Behaviour:</strong> If called with no arguments, returns an empty string. If the first argument is <code>local</code>, it is resolved to the script's directory before joining.</p>
+<p><strong>Note:</strong> This is the recommended way to build paths in Bolt scripts. It prevents double-slash errors, handles Windows/Unix differences, and integrates cleanly with <code>local</code>.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Join three components
+path = bfile.joinpath(local, "data", "results.txt")
+sys.out path
+# Output (Linux): /home/user/project/data/results.txt
+# Output (Windows): C:\Users\user\project\data\results.txt
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Use in a read call
+folder = "configs"
+file = "app.json"
+full = bfile.joinpath(local, folder, file)
+content = bfile.read(full)
+sys.out content
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+# Build a log path and append
+log_path = bfile.joinpath(local, "logs", "run.log")
+bfile.append(log_path, "Startup complete\n")
+</code></pre></div>
+<hr />
+<h2 id="error-handling-patterns">Error Handling Patterns</h2>
+<p>Bfile does not provide a try/catch-style mechanism in Bolt v1.x. Errors raised by bfile functions propagate as runtime exceptions and will halt execution unless the interpreter is invoked with error tolerance flags.</p>
+<p><strong>Recommended defensive pattern — check before acting:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+config = local + "/config.txt"
+
+if !bfile.exists(config)
+    sys.out "Error: config.txt not found"
+    void.0
+end.if
+
+data = bfile.read(config)
+sys.out data
+</code></pre></div>
+<p><strong>Recommended pattern — validate before write:</strong></p>
+<div class="highlight"><pre><span></span><code>$get.bfile
+
+out_dir = bfile.joinpath(local, "output")
+
+if !bfile.isdir(out_dir)
+    bfile.mkdir(out_dir)
+end.if
+
+bfile.writefile(bfile.joinpath(out_dir, "result.txt"), "done")
+</code></pre></div>
+<p><strong>Debugging failed operations:</strong></p>
+<p>Run with the <code>--debug</code> flag to receive full stack traces and error context:</p>
+<div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--debug<span class="w"> </span>--run<span class="w"> </span>script.bolt
+</code></pre></div>
+<p>The error message format for all bfile errors is:</p>
+<div class="highlight"><pre><span></span><code>RuntimeError: bfile.error.&lt;ErrorType&gt;: &lt;human-readable description&gt;
+</code></pre></div>
+<p>Parse the <code>bfile.error.*</code> prefix to distinguish filesystem errors from other runtime errors in logs or tooling.</p>
+<hr />
+<h2 id="cross-platform-notes">Cross-Platform Notes</h2>
+<p>Bfile is designed to work identically on Windows, Linux, and macOS.</p>
+<ul>
+<li><strong>Path separators:</strong> Use <code>bfile.joinpath</code> to construct paths — never hard-code <code>\</code> or <code>/</code> separators manually in path strings.</li>
+<li><strong><code>local</code> keyword:</strong> Resolves correctly regardless of the working directory from which <code>bolt</code> was invoked.</li>
+<li><strong>Line endings:</strong> <code>bfile.read</code> and <code>bfile.write</code> use UTF-8 encoding with Python's default newline handling. On Windows, <code>\r\n</code> in files is read as-is. If you need consistent <code>\n</code> across platforms, normalise the string after reading.</li>
+<li><strong>Encoding:</strong> All read and write operations use UTF-8 exclusively. Files with other encodings (e.g., Latin-1) may produce garbled output or errors.</li>
+<li><strong>Metadata preservation:</strong> <code>bfile.copy</code> uses <code>copy2</code> internally, preserving timestamps and permission bits where the OS allows.</li>
+</ul>
+<hr />
+<p><em>End of bfile reference. For interpreter internals, see the bolt200 engine documentation.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
