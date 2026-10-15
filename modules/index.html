@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -609,7 +609,7 @@ $get.mymodule
 
 public.module[pytools$1$lang] {{
 def hello():
-    print(&quot;hello from python module&quot;)
+    print("hello from python module")
 }}
 </code></pre></div>
 <p>Opening the Modules section refreshes the page once and then loads the module docs view. That keeps the newest module instructions in sync with the current page state.</p>
@@ -622,7 +622,7 @@ def hello():
 Boltclock.pause(2)
 
 fn afterwait();
-  sys.out &#39;resuming after wait&#39;
+  sys.out 'resuming after wait'
 end
 
 Boltclock.pause(1)
@@ -631,20 +631,20 @@ let.call afterwait()
 <h3 id="boltloop">Boltloop</h3>
 <p>Simple repeated execution helper.</p>
 <div class="highlight"><pre><span></span><code>BOLTLOOP.LOOP(5)
-  sys.out &#39;tick&#39;
+  sys.out 'tick'
 end.loop
 </code></pre></div>
 <p>Use <code>BOLTLOOP.LOOP(times)</code> for fixed-count repetition. The block ends with <code>end.loop</code>.</p>
 <h3 id="random">Random</h3>
 <p>Pick random items from a provided list or data arguments.</p>
-<div class="highlight"><pre><span></span><code>Random.main(&#39;data1&#39;, &#39;data2&#39;, &#39;data3&#39;)
+<div class="highlight"><pre><span></span><code>Random.main('data1', 'data2', 'data3')
 
-choice = Random.main(&#39;red&#39;,&#39;blue&#39;,&#39;green&#39;)
+choice = Random.main('red','blue','green')
 sys.out /choice/
 </code></pre></div>
 <h3 id="void0-runtime-stop">void.0 - runtime stop</h3>
 <p>To immediately halt Bolt execution from your script use the sentinel <code>void.0</code>.</p>
-<div class="highlight"><pre><span></span><code>sys.out &#39;starting&#39;
+<div class="highlight"><pre><span></span><code>sys.out 'starting'
 void.0
 # code below will not execute
 </code></pre></div>
@@ -700,7 +700,7 @@ void.0
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

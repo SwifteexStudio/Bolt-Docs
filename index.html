@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -2625,21 +2625,21 @@ bolt<span class="w"> </span>myscript.bvmb
 <p>This section focuses on syntax and features available from Bolt v1.61+ and newer. Bolt v2.0.0+ keeps compatibility while adding the refreshed module workflow.</p>
 <h3 id="printing-sysout">Printing - <code>sys.out</code></h3>
 <p><strong>What it is and what it does:</strong> <code>sys.out</code> writes text or evaluated tokens to standard output. Use forward slashes to expand variables inside output: <code>/var/</code>.</p>
-<div class="highlight"><pre><span></span><code>sys.out &#39;hello, world!&#39;
+<div class="highlight"><pre><span></span><code>sys.out 'hello, world!'
 
-name = &#39;Eric&#39;
+name = 'Eric'
 sys.out /name/
 
 num1 = 10
 num2 = 15
 sys.out /num1/ + /num2/
 
-sys.out &#39;the calculation is /num1 + num2/&#39;
+sys.out 'the calculation is /num1 + num2/'
 </code></pre></div>
 <p>If literal tokens such as <code>/name/</code> appear in the output, confirm that the variable is defined and that the forward slashes are used without spaces.</p>
 <h3 id="variables">Variables</h3>
 <p>Assignment uses equals. Starting with v1.61+, integers and numeric types are available and can be used in arithmetic.</p>
-<div class="highlight"><pre><span></span><code>myvariable = &#39;Alice&#39;
+<div class="highlight"><pre><span></span><code>myvariable = 'Alice'
 age = 14
 
 sys.out /myvariable/
@@ -2647,49 +2647,49 @@ sys.out /age/
 </code></pre></div>
 <h3 id="lists">Lists</h3>
 <p>Create lists with <code>let.list['a' ; 'b']</code>. Index with 0-based notation.</p>
-<div class="highlight"><pre><span></span><code>listname = let.list[&#39;1&#39;, &#39;2&#39;]
+<div class="highlight"><pre><span></span><code>listname = let.list['1', '2']
 
 sys.out /listname[0]/
 </code></pre></div>
 <h3 id="in-keyword"><code>in</code> Keyword</h3>
-<div class="highlight"><pre><span></span><code>listname = let.list[&#39;1&#39;, &#39;2&#39;]
+<div class="highlight"><pre><span></span><code>listname = let.list['1', '2']
 if 3 in listname
-    sys.out &#39;matched&#39;
+    sys.out 'matched'
 else
-    sys.out &#39;not matched&#39;
+    sys.out 'not matched'
 end.if
 </code></pre></div>
 <h3 id="functions-and-invocation">Functions and Invocation</h3>
 <p>Functions are declared with <code>fn name(); ... end</code>. The helper <code>let.call name()</code> is available and standard on v1.61+.</p>
 <div class="highlight"><pre><span></span><code>fn greet(name);
-  sys.out &#39;hello /name/!&#39;
+  sys.out 'hello /name/!'
 end
 
 let.call greet(jeff)
 </code></pre></div>
 <h3 id="typed-input-helpers-v161">Typed Input Helpers (v1.61+)</h3>
 <p>In v1.61+ Bolt provides typed input helpers to capture typed values directly: <code>let.userinput.int 'prompt'</code> for integers and <code>let.userinput.str 'prompt'</code> for strings.</p>
-<div class="highlight"><pre><span></span><code>num = let.userinput.int &#39;enter a number: &#39;
-name = let.userinput.str &#39;enter your name: &#39;
+<div class="highlight"><pre><span></span><code>num = let.userinput.int 'enter a number: '
+name = let.userinput.str 'enter your name: '
 </code></pre></div>
 <p>Bolt supports typed inputs such as <code>int</code> and <code>str</code>. You can also check the input type using <code>:int</code> or <code>:str</code>.</p>
-<div class="highlight"><pre><span></span><code>intvalue = let.userinput.int &#39;value: &#39;
+<div class="highlight"><pre><span></span><code>intvalue = let.userinput.int 'value: '
 if intvalue == :int
-    sys.out &#39;it is integer&#39;
+    sys.out 'it is integer'
 eif intvalue == :str
-    sys.out &#39;it is string&#39;
+    sys.out 'it is string'
 else
-    sys.out &#39;Invalid selection.&#39;
+    sys.out 'Invalid selection.'
 end.if
 </code></pre></div>
 <h3 id="control-flow-if-eif-else">Control Flow - <code>if</code>, <code>eif</code>, <code>else</code></h3>
 <p>v1.61+ includes the conditional ladder: <code>if</code>, <code>eif</code> for else-if, and <code>else</code> for fallback. Use <code>end.if</code> to close the block.</p>
 <div class="highlight"><pre><span></span><code>if condition
-  sys.out &#39;yes&#39;
+  sys.out 'yes'
 eif other_condition
-  sys.out &#39;other&#39;
+  sys.out 'other'
 else
-  sys.out &#39;no&#39;
+  sys.out 'no'
 end.if
 </code></pre></div>
 <h3 id="while-loops">While Loops</h3>
@@ -2701,7 +2701,7 @@ end.while
 <p>Example:</p>
 <div class="highlight"><pre><span></span><code>x = 1
 while x &lt; 5
-  sys.out &#39;looping&#39;
+  sys.out 'looping'
   x = x + 1
 end.while
 </code></pre></div>
@@ -2722,14 +2722,14 @@ end.while
 <li>Do not include whitespace between the slashes and the token name if you expect expansion.</li>
 </ol>
 <h4 id="examples">Examples</h4>
-<div class="highlight"><pre><span></span><code>name = &#39;mina&#39;
+<div class="highlight"><pre><span></span><code>name = 'mina'
 sys.out /name/
 
 a = 5
 b = 4
 sys.out /a/ + /b/
 
-sys.out &#39;the sum is /a + b/&#39;
+sys.out 'the sum is /a + b/'
 </code></pre></div>
 <h4 id="common-errors-fixes">Common errors &amp; fixes</h4>
 <ul>
@@ -2745,7 +2745,7 @@ sys.out &#39;the sum is /a + b/&#39;
 <div class="highlight"><pre><span></span><code>identifier = expression
 </code></pre></div>
 <h4 id="examples_1">Examples</h4>
-<div class="highlight"><pre><span></span><code>username = &#39;guest&#39;
+<div class="highlight"><pre><span></span><code>username = 'guest'
 count = 3
 total = count + 2
 
@@ -2759,7 +2759,7 @@ sys.out /total/
 <h4 id="exact-syntax_1">Exact syntax</h4>
 <p><code>let.list['item1' ; 'item2' ; 'itemN']</code> constructs a list. Index with square brackets: <code>listVar[index]</code>.</p>
 <h4 id="examples_2">Examples</h4>
-<div class="highlight"><pre><span></span><code>listname = let.list[&#39;1&#39; ; &#39;2&#39;]
+<div class="highlight"><pre><span></span><code>listname = let.list['1' ; '2']
 
 sys.out /listname[0]/
 </code></pre></div>
@@ -2785,7 +2785,7 @@ end
 <p>or, on many runtimes, direct invocation <code>name()</code>.</p>
 <h4 id="examples_3">Examples</h4>
 <div class="highlight"><pre><span></span><code>fn greet();
-  sys.out &#39;hello&#39;
+  sys.out 'hello'
 end
 
 let.call greet()
@@ -2797,15 +2797,15 @@ let.call greet()
 <h4 id="purpose_4">Purpose</h4>
 <p>Capture user-provided values directly as specific types to avoid manual parsing and conversion bugs.</p>
 <h4 id="exact-syntax_3">Exact syntax</h4>
-<div class="highlight"><pre><span></span><code>var = let.userinput.int &#39;prompt&#39;
+<div class="highlight"><pre><span></span><code>var = let.userinput.int 'prompt'
 </code></pre></div>
 <p>returns an integer.</p>
-<div class="highlight"><pre><span></span><code>var = let.userinput.str &#39;prompt&#39;
+<div class="highlight"><pre><span></span><code>var = let.userinput.str 'prompt'
 </code></pre></div>
 <p>returns a string.</p>
 <h4 id="examples_4">Examples</h4>
-<div class="highlight"><pre><span></span><code>num = let.userinput.int &#39;enter a number: &#39;
-name = let.userinput.str &#39;enter your name: &#39;
+<div class="highlight"><pre><span></span><code>num = let.userinput.int 'enter a number: '
+name = let.userinput.str 'enter your name: '
 </code></pre></div>
 <hr />
 <h3 id="control-flow-if-eif-else_1">Control Flow - <code>if</code> / <code>eif</code> / <code>else</code></h3>
@@ -2822,11 +2822,11 @@ end.if
 </code></pre></div>
 <h4 id="examples-patterns">Examples &amp; patterns</h4>
 <div class="highlight"><pre><span></span><code>if /score/ &gt;= 90
-  sys.out &#39;grade: A&#39;
+  sys.out 'grade: A'
 eif /score/ &gt;= 80
-  sys.out &#39;grade: B&#39;
+  sys.out 'grade: B'
 else
-  sys.out &#39;grade: C or below&#39;
+  sys.out 'grade: C or below'
 end.if
 </code></pre></div>
 <hr />
@@ -2859,7 +2859,7 @@ end.loop
 <div class="highlight"><pre><span></span><code>$get.boltloop
 
 boltloop.loop(5)
-  sys.out &#39;hi&#39;
+  sys.out 'hi'
 end.loop
 </code></pre></div>
 <h4 id="rules_1">Rules</h4>
@@ -2895,8 +2895,8 @@ end.try
 <p>The <code>and</code> keyword separates the caught error identifier from the handler expression. The handler expression may be a single statement such as <code>sys.out 'message'</code>, or a call to a function that contains more complex recovery logic.</p>
 <h4 id="minimal-example">Minimal example</h4>
 <div class="highlight"><pre><span></span><code>try;
-    sys.out &#39;risky code&#39;
-catch(bolt.error.RuntimeError) and sys.out &#39;something went wrong&#39;
+    sys.out 'risky code'
+catch(bolt.error.RuntimeError) and sys.out 'something went wrong'
 end.try
 </code></pre></div>
 <hr />
@@ -2934,7 +2934,7 @@ end.try
 <p>Example — catching a known structural issue during dynamic evaluation:</p>
 <div class="highlight"><pre><span></span><code>try;
     let.call undefined_fn()
-catch(bolt.error.SyntaxError) and sys.out &#39;parse failed: check your source&#39;
+catch(bolt.error.SyntaxError) and sys.out 'parse failed: check your source'
 end.try
 </code></pre></div>
 <hr />
@@ -2980,33 +2980,33 @@ end.try
 </table>
 <p>Examples:</p>
 <div class="highlight"><pre><span></span><code># Guard against division by zero
-divisor = let.userinput.int &#39;enter divisor: &#39;
+divisor = let.userinput.int 'enter divisor: '
 
 try;
     result = 100 / /divisor/
     sys.out /result/
-catch(bolt.error.ZeroDivisionError) and sys.out &#39;ERROR: cannot divide by zero&#39;
+catch(bolt.error.ZeroDivisionError) and sys.out 'ERROR: cannot divide by zero'
 end.try
 </code></pre></div>
 <div class="highlight"><pre><span></span><code># Guard against a missing variable reference
 try;
     sys.out /undefined_variable/
-catch(bolt.error.ReferenceError) and sys.out &#39;ERROR: variable not defined&#39;
+catch(bolt.error.ReferenceError) and sys.out 'ERROR: variable not defined'
 end.try
 </code></pre></div>
 <div class="highlight"><pre><span></span><code># Guard against a type mismatch
 try;
-    bad = &#39;hello&#39; + 99
+    bad = 'hello' + 99
     sys.out /bad/
-catch(bolt.error.RuntimeError) and sys.out &#39;ERROR: incompatible types in operation&#39;
+catch(bolt.error.RuntimeError) and sys.out 'ERROR: incompatible types in operation'
 end.try
 </code></pre></div>
 <div class="highlight"><pre><span></span><code># Guard against an out-of-bounds list access
-items = let.list[&#39;a&#39; ; &#39;b&#39; ; &#39;c&#39;]
+items = let.list['a' ; 'b' ; 'c']
 
 try;
     sys.out /items[99]/
-catch(bolt.error.MemoryError) and sys.out &#39;ERROR: index out of bounds&#39;
+catch(bolt.error.MemoryError) and sys.out 'ERROR: index out of bounds'
 end.try
 </code></pre></div>
 <hr />
@@ -3034,15 +3034,15 @@ end.try
 <div class="highlight"><pre><span></span><code># Attempt to write to a null-locked variable
 try;
     locked_var = $null
-    locked_var = &#39;new value&#39;
-catch(bolt.error.NullAssignmentError) and sys.out &#39;ERROR: cannot reassign a null-locked variable&#39;
+    locked_var = 'new value'
+catch(bolt.error.NullAssignmentError) and sys.out 'ERROR: cannot reassign a null-locked variable'
 end.try
 </code></pre></div>
 <div class="highlight"><pre><span></span><code># Attempt to read a null-locked variable
 try;
     dead_var = $null
     sys.out /dead_var/
-catch(bolt.error.NullLockViolation) and sys.out &#39;ERROR: variable is null-locked and cannot be read&#39;
+catch(bolt.error.NullLockViolation) and sys.out 'ERROR: variable is null-locked and cannot be read'
 end.try
 </code></pre></div>
 <hr />
@@ -3074,32 +3074,32 @@ end.try
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 try;
-    content = bfile.read(local + &#39;/config.txt&#39;)
+    content = bfile.read(local + '/config.txt')
     sys.out /content/
-catch(bfile.error.FileNotFound) and sys.out &#39;ERROR: config.txt not found&#39;
+catch(bfile.error.FileNotFound) and sys.out 'ERROR: config.txt not found'
 end.try
 </code></pre></div>
 <p>Example — distinguishing access errors from missing files:</p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 try;
-    data = bfile.read(&#39;/etc/secret.conf&#39;)
+    data = bfile.read('/etc/secret.conf')
     sys.out /data/
-catch(bfile.error.FileNotFound) and sys.out &#39;ERROR: file does not exist&#39;
-catch(bfile.error.AccessDenied) and sys.out &#39;ERROR: permission denied&#39;
-catch(bfile.error.IOError) and sys.out &#39;ERROR: unexpected I/O failure&#39;
+catch(bfile.error.FileNotFound) and sys.out 'ERROR: file does not exist'
+catch(bfile.error.AccessDenied) and sys.out 'ERROR: permission denied'
+catch(bfile.error.IOError) and sys.out 'ERROR: unexpected I/O failure'
 end.try
 </code></pre></div>
 <hr />
 <h3 id="multiple-catch-clauses">Multiple <code>catch</code> Clauses</h3>
 <p>A single <code>try</code> block may have multiple <code>catch</code> clauses. The engine evaluates them top-to-bottom and executes the first one whose identifier matches the raised error. Subsequent clauses are skipped.</p>
 <div class="highlight"><pre><span></span><code>try;
-    val = let.userinput.int &#39;enter a number: &#39;
+    val = let.userinput.int 'enter a number: '
     result = 100 / /val/
     sys.out /result/
-catch(bolt.error.ZeroDivisionError) and sys.out &#39;ERROR: divisor was zero&#39;
-catch(bolt.error.TypeError) and sys.out &#39;ERROR: input was not a number&#39;
-catch(bolt.error.RuntimeError) and sys.out &#39;ERROR: unspecified runtime failure&#39;
+catch(bolt.error.ZeroDivisionError) and sys.out 'ERROR: divisor was zero'
+catch(bolt.error.TypeError) and sys.out 'ERROR: input was not a number'
+catch(bolt.error.RuntimeError) and sys.out 'ERROR: unspecified runtime failure'
 end.try
 </code></pre></div>
 <p><strong>Ordering advice:</strong> Place the most specific error identifiers first and <code>bolt.error.RuntimeError</code> last. Since <code>RuntimeError</code> is the base class for general execution failures, placing it first would swallow more specific errors before they can be matched.</p>
@@ -3108,23 +3108,23 @@ end.try
 <p><code>bolt.error.RuntimeError</code> functions as the widest net available. Use it as a last-resort clause when you need to ensure an error is always handled regardless of type, but you have no specific recovery logic to apply.</p>
 <div class="highlight"><pre><span></span><code>try;
     let.call risky_operation()
-catch(bolt.error.ZeroDivisionError) and sys.out &#39;specific: division by zero&#39;
-catch(bolt.error.RuntimeError) and sys.out &#39;unhandled runtime error — operation aborted&#39;
+catch(bolt.error.ZeroDivisionError) and sys.out 'specific: division by zero'
+catch(bolt.error.RuntimeError) and sys.out 'unhandled runtime error — operation aborted'
 end.try
 </code></pre></div>
 <hr />
 <h3 id="using-a-handler-function">Using a Handler Function</h3>
 <p>For non-trivial recovery logic, extract the handler into a dedicated function and invoke it from the <code>catch</code> clause.</p>
 <div class="highlight"><pre><span></span><code>fn on_file_error();
-    sys.out &#39;File operation failed.&#39;
-    sys.out &#39;Check that the path exists and permissions are correct.&#39;
-    sys.out &#39;Run with --debug for a full trace.&#39;
+    sys.out 'File operation failed.'
+    sys.out 'Check that the path exists and permissions are correct.'
+    sys.out 'Run with --debug for a full trace.'
 end
 
 $get.bfile
 
 try;
-    content = bfile.read(local + &#39;/data.txt&#39;)
+    content = bfile.read(local + '/data.txt')
     sys.out /content/
 catch(bfile.error.FileNotFound) and let.call on_file_error()
 catch(bfile.error.AccessDenied) and let.call on_file_error()
@@ -3236,33 +3236,33 @@ end.try
 <p>The calculator example below assumes Bolt v1.61+ so that typed input helpers and modern control flow are available.</p>
 <h3 id="canonical-source">Canonical source</h3>
 <div class="highlight"><pre><span></span><code>fn calc();
-  sys.out &#39;Welcome to Calc.&#39;
+  sys.out 'Welcome to Calc.'
 
-  num1 = let.userinput.int &#39;enter number first: &#39;
-  num2 = let.userinput.int &#39;enter number second: &#39;
+  num1 = let.userinput.int 'enter number first: '
+  num2 = let.userinput.int 'enter number second: '
 
-  sys.out &#39;1) addition&#39;
-  sys.out &#39;2) subtraction&#39;
-  sys.out &#39;3) multiplication&#39;
-  sys.out &#39;4) division&#39;
-  sys.out &#39;Choose 1 to 4.&#39;
+  sys.out '1) addition'
+  sys.out '2) subtraction'
+  sys.out '3) multiplication'
+  sys.out '4) division'
+  sys.out 'Choose 1 to 4.'
 
-  choose = let.userinput.str &#39;choose: &#39;
+  choose = let.userinput.str 'choose: '
 
-  if choose == &#39;1&#39;
+  if choose == '1'
     sys.out /num1/ + /num2/
-  eif choose == &#39;2&#39;
+  eif choose == '2'
     sys.out /num1/ - /num2/
-  eif choose == &#39;3&#39;
+  eif choose == '3'
     sys.out /num1/ * /num2/
-  eif choose == &#39;4&#39;
+  eif choose == '4'
     if /num2/ == 0
-      sys.out &#39;ERROR: divide by zero&#39;
+      sys.out 'ERROR: divide by zero'
     else
       sys.out /num1/ / /num2/
     end.if
   else
-    sys.out &#39;Invalid selection.&#39;
+    sys.out 'Invalid selection.'
   end.if
 end
 
@@ -3270,35 +3270,35 @@ let.call calc()
 </code></pre></div>
 <h3 id="hardened-version-with-error-handling">Hardened version with error handling</h3>
 <div class="highlight"><pre><span></span><code>fn calc();
-    sys.out &#39;Welcome to Calc.&#39;
+    sys.out 'Welcome to Calc.'
 
     try;
-        num1 = let.userinput.int &#39;enter number first: &#39;
-        num2 = let.userinput.int &#39;enter number second: &#39;
-    catch(bolt.error.TypeError) and sys.out &#39;ERROR: numeric input required&#39;
+        num1 = let.userinput.int 'enter number first: '
+        num2 = let.userinput.int 'enter number second: '
+    catch(bolt.error.TypeError) and sys.out 'ERROR: numeric input required'
     end.try
 
-    sys.out &#39;1) addition&#39;
-    sys.out &#39;2) subtraction&#39;
-    sys.out &#39;3) multiplication&#39;
-    sys.out &#39;4) division&#39;
-    sys.out &#39;Choose 1 to 4.&#39;
+    sys.out '1) addition'
+    sys.out '2) subtraction'
+    sys.out '3) multiplication'
+    sys.out '4) division'
+    sys.out 'Choose 1 to 4.'
 
-    choose = let.userinput.str &#39;choose: &#39;
+    choose = let.userinput.str 'choose: '
 
-    if choose == &#39;1&#39;
+    if choose == '1'
         sys.out /num1/ + /num2/
-    eif choose == &#39;2&#39;
+    eif choose == '2'
         sys.out /num1/ - /num2/
-    eif choose == &#39;3&#39;
+    eif choose == '3'
         sys.out /num1/ * /num2/
-    eif choose == &#39;4&#39;
+    eif choose == '4'
         try;
             sys.out /num1/ / /num2/
-        catch(bolt.error.ZeroDivisionError) and sys.out &#39;ERROR: divide by zero&#39;
+        catch(bolt.error.ZeroDivisionError) and sys.out 'ERROR: divide by zero'
         end.try
     else
-        sys.out &#39;Invalid selection.&#39;
+        sys.out 'Invalid selection.'
     end.if
 end
 
@@ -3309,21 +3309,21 @@ let.call calc()
 <p>Small copy-ready samples for quick testing.</p>
 <h3 id="save-as-hellobolt">Save as hello.bolt</h3>
 <div class="highlight"><pre><span></span><code># Save as hello.bolt
-sys.out &#39;hello, world!&#39;
+sys.out 'hello, world!'
 </code></pre></div>
 <h3 id="ast-inspection">AST inspection</h3>
-<div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--inspect-ast<span class="w"> </span>--exec-string<span class="w"> </span><span class="s2">&quot;sys.out &#39;1+2&#39;&quot;</span>
+<div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--inspect-ast<span class="w"> </span>--exec-string<span class="w"> </span><span class="s2">"sys.out '1+2'"</span>
 </code></pre></div>
 <h3 id="module-example-mymodboltmodule">Module example (mymod.boltmodule)</h3>
 <div class="highlight"><pre><span></span><code>[BV=200, CORE=0, VER: 1.0, LANG=Bolt]
 
 public.module[mymod$1$bolt] {{
 fn module_init();
-  sys.out &#39;mymod initialized&#39;
+  sys.out 'mymod initialized'
 end
 
 fn greet();
-  sys.out &#39;hello from mymod&#39;
+  sys.out 'hello from mymod'
 end
 }}
 </code></pre></div>
@@ -3414,7 +3414,7 @@ let.call mymod.greet()
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

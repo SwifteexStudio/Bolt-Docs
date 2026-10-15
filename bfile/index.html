@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
       
 
@@ -910,14 +910,14 @@ If your runtime is below v1.70, the directive will fail silently or throw an imp
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # These two calls are equivalent when running from C:\projects\app\
-content = bfile.read(&quot;C:\projects\app\config.txt&quot;)
-content = bfile.read(local + &quot;\config.txt&quot;)
+content = bfile.read("C:\projects\app\config.txt")
+content = bfile.read(local + "\config.txt")
 </code></pre></div>
 <p><strong>Fallback behaviour:</strong> If the script has no known source path (e.g., it was passed as an inline string via the REPL or <code>bolt -e</code>), <code>local</code> resolves to the current working directory (<code>os.getcwd()</code>).</p>
 <p><strong>Usage with joinpath (recommended):</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-config_path = bfile.joinpath(local, &quot;config&quot;, &quot;settings.json&quot;)
+config_path = bfile.joinpath(local, "config", "settings.json")
 data = bfile.read(config_path)
 sys.out data
 </code></pre></div>
@@ -932,7 +932,7 @@ sys.out data
 <li>Overwriting the running script itself is also blocked.</li>
 </ul>
 <p><strong>Error raised:</strong></p>
-<div class="highlight"><pre><span></span><code>File access to &#39;/etc/passwd&#39; is disallowed in safe mode.
+<div class="highlight"><pre><span></span><code>File access to '/etc/passwd' is disallowed in safe mode.
 </code></pre></div>
 <p>Safe mode is intended for sandboxed or untrusted script execution environments. There is no bfile-level API to toggle safe mode — it is set at the interpreter level.</p>
 <hr />
@@ -967,9 +967,9 @@ sys.out data
 <p>These string values are embedded in all exception messages raised by bfile functions, making them parseable in error-handling logic or log filtering.</p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-result = bfile.read(&quot;missing.txt&quot;)
+result = bfile.read("missing.txt")
 # If the file is missing, the runtime throws:
-# RuntimeError: bfile.error.FileNotFound: File not found: &#39;missing.txt&#39;
+# RuntimeError: bfile.error.FileNotFound: File not found: 'missing.txt'
 </code></pre></div>
 <p>Use <code>--debug</code> for full stack traces:</p>
 <div class="highlight"><pre><span></span><code>bolt<span class="w"> </span>--debug<span class="w"> </span>--run<span class="w"> </span>script.bolt
@@ -1012,26 +1012,26 @@ result = bfile.read(&quot;missing.txt&quot;)
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Read and print a file
-bfile.read(&quot;readme.txt&quot;)
+bfile.read("readme.txt")
 
 # Read into a variable
-content = bfile.read(&quot;readme.txt&quot;)
+content = bfile.read("readme.txt")
 sys.out content
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Read using the local keyword
-notes = bfile.read(local + &quot;/notes.txt&quot;)
+notes = bfile.read(local + "/notes.txt")
 sys.out notes
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Read and check contents
-data = bfile.read(&quot;users.txt&quot;)
-if &quot;admin&quot; in data
-    sys.out &quot;Admin record found&quot;
+data = bfile.read("users.txt")
+if "admin" in data
+    sys.out "Admin record found"
 else
-    sys.out &quot;No admin record&quot;
+    sys.out "No admin record"
 end.if
 </code></pre></div>
 <hr />
@@ -1087,20 +1087,20 @@ end.if
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Write a plain text file to the script directory
-bfile.write(&quot;Hello, world!&quot;, local, &quot;output&quot;, &quot;txt&quot;)
+bfile.write("Hello, world!", local, "output", "txt")
 # Creates: &lt;script_dir&gt;/output.txt
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-username = &quot;Ariyan&quot;
-report = &quot;User: &quot; + username + &quot; logged in.&quot;
-bfile.write(report, local, &quot;log&quot;, &quot;.log&quot;)
+username = "Ariyan"
+report = "User: " + username + " logged in."
+bfile.write(report, local, "log", ".log")
 # Creates: &lt;script_dir&gt;/log.log
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Write with a constructed directory
-bfile.write(&quot;data here&quot;, local + &quot;/exports&quot;, &quot;result&quot;, &quot;csv&quot;)
+bfile.write("data here", local + "/exports", "result", "csv")
 # Creates: &lt;script_dir&gt;/exports/result.csv
 </code></pre></div>
 <hr />
@@ -1142,12 +1142,12 @@ bfile.write(&quot;data here&quot;, local + &quot;/exports&quot;, &quot;result&qu
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-bfile.writefile(local + &quot;/config.txt&quot;, &quot;debug=true&quot;)
+bfile.writefile(local + "/config.txt", "debug=true")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-path = bfile.joinpath(local, &quot;output&quot;, &quot;result.txt&quot;)
-bfile.writefile(path, &quot;Final result: 42&quot;)
+path = bfile.joinpath(local, "output", "result.txt")
+bfile.writefile(path, "Final result: 42")
 </code></pre></div>
 <hr />
 <h3 id="bfileappend">bfile.append</h3>
@@ -1189,14 +1189,14 @@ bfile.writefile(path, &quot;Final result: 42&quot;)
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-bfile.append(local + &quot;/log.txt&quot;, &quot;Session started\n&quot;)
-bfile.append(local + &quot;/log.txt&quot;, &quot;User connected\n&quot;)
+bfile.append(local + "/log.txt", "Session started\n")
+bfile.append(local + "/log.txt", "User connected\n")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Build a log entry
-entry = &quot;[INFO] Operation completed\n&quot;
-bfile.append(local + &quot;/events.log&quot;, entry)
+entry = "[INFO] Operation completed\n"
+bfile.append(local + "/events.log", entry)
 </code></pre></div>
 <hr />
 <h3 id="bfileexists">bfile.exists</h3>
@@ -1226,19 +1226,19 @@ bfile.append(local + &quot;/events.log&quot;, entry)
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-if bfile.exists(local + &quot;/config.txt&quot;)
-    sys.out &quot;Config found&quot;
+if bfile.exists(local + "/config.txt")
+    sys.out "Config found"
 else
-    sys.out &quot;Config missing — using defaults&quot;
+    sys.out "Config missing — using defaults"
 end.if
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-target = local + &quot;/data/output.csv&quot;
+target = local + "/data/output.csv"
 if bfile.exists(target)
     bfile.remove(target)
 end.if
-bfile.writefile(target, &quot;col1,col2\n&quot;)
+bfile.writefile(target, "col1,col2\n")
 </code></pre></div>
 <hr />
 <h3 id="bfileisfile">bfile.isfile</h3>
@@ -1268,12 +1268,12 @@ bfile.writefile(target, &quot;col1,col2\n&quot;)
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-path = local + &quot;/data.json&quot;
+path = local + "/data.json"
 if bfile.isfile(path)
     content = bfile.read(path)
     sys.out content
 else
-    sys.out &quot;Not a file&quot;
+    sys.out "Not a file"
 end.if
 </code></pre></div>
 <hr />
@@ -1304,12 +1304,12 @@ end.if
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-target_dir = local + &quot;/exports&quot;
+target_dir = local + "/exports"
 if bfile.isdir(target_dir)
-    sys.out &quot;Export directory ready&quot;
+    sys.out "Export directory ready"
 else
     bfile.mkdir(target_dir)
-    sys.out &quot;Export directory created&quot;
+    sys.out "Export directory created"
 end.if
 </code></pre></div>
 <hr />
@@ -1349,22 +1349,22 @@ bfile.listdir(path)
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-# List the script&#39;s own directory
+# List the script's own directory
 entries = bfile.listdir()
 sys.out entries
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # List a subdirectory
-files = bfile.listdir(local + &quot;/assets&quot;)
+files = bfile.listdir(local + "/assets")
 sys.out files
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Check if a specific file is present
 entries = bfile.listdir()
-if &quot;config.bolt&quot; in entries
-    sys.out &quot;Config script detected&quot;
+if "config.bolt" in entries
+    sys.out "Config script detected"
 end.if
 </code></pre></div>
 <hr />
@@ -1401,12 +1401,12 @@ end.if
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-bfile.remove(local + &quot;/temp.txt&quot;)
-sys.out &quot;Cleanup complete&quot;
+bfile.remove(local + "/temp.txt")
+sys.out "Cleanup complete"
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-old_log = local + &quot;/logs/session_old.log&quot;
+old_log = local + "/logs/session_old.log"
 if bfile.isfile(old_log)
     bfile.remove(old_log)
 end.if
@@ -1445,7 +1445,7 @@ end.if
 <p><strong>Examples:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-bfile.rmdir(local + &quot;/tmp_empty&quot;)
+bfile.rmdir(local + "/tmp_empty")
 </code></pre></div>
 <p>To remove a directory with contents, use <code>bfile.rmtree</code>.</p>
 <hr />
@@ -1484,9 +1484,9 @@ bfile.rmdir(local + &quot;/tmp_empty&quot;)
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Wipe and recreate a build directory
-bfile.rmtree(local + &quot;/build&quot;)
-bfile.mkdir(local + &quot;/build&quot;)
-sys.out &quot;Build directory reset&quot;
+bfile.rmtree(local + "/build")
+bfile.mkdir(local + "/build")
+sys.out "Build directory reset"
 </code></pre></div>
 <hr />
 <h3 id="bfilecopy">bfile.copy</h3>
@@ -1529,13 +1529,13 @@ sys.out &quot;Build directory reset&quot;
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Copy a config file to a backup
-bfile.copy(local + &quot;/config.txt&quot;, local + &quot;/config.bak&quot;)
+bfile.copy(local + "/config.txt", local + "/config.bak")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Copy a file into a subdirectory
-bfile.mkdir(local + &quot;/backup&quot;)
-bfile.copy(local + &quot;/data.json&quot;, local + &quot;/backup&quot;)
+bfile.mkdir(local + "/backup")
+bfile.copy(local + "/data.json", local + "/backup")
 # Result: &lt;script_dir&gt;/backup/data.json
 </code></pre></div>
 <hr />
@@ -1572,18 +1572,18 @@ bfile.copy(local + &quot;/data.json&quot;, local + &quot;/backup&quot;)
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Create a single directory
-bfile.mkdir(local + &quot;/output&quot;)
+bfile.mkdir(local + "/output")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Create a deeply nested directory structure in one call
-bfile.mkdir(local + &quot;/output/reports/2025/q1&quot;)
+bfile.mkdir(local + "/output/reports/2025/q1")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Conditional creation
-if !bfile.isdir(local + &quot;/cache&quot;)
-    bfile.mkdir(local + &quot;/cache&quot;)
+if !bfile.isdir(local + "/cache")
+    bfile.mkdir(local + "/cache")
 end.if
 </code></pre></div>
 <hr />
@@ -1617,7 +1617,7 @@ end.if
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Join three components
-path = bfile.joinpath(local, &quot;data&quot;, &quot;results.txt&quot;)
+path = bfile.joinpath(local, "data", "results.txt")
 sys.out path
 # Output (Linux): /home/user/project/data/results.txt
 # Output (Windows): C:\Users\user\project\data\results.txt
@@ -1625,8 +1625,8 @@ sys.out path
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Use in a read call
-folder = &quot;configs&quot;
-file = &quot;app.json&quot;
+folder = "configs"
+file = "app.json"
 full = bfile.joinpath(local, folder, file)
 content = bfile.read(full)
 sys.out content
@@ -1634,8 +1634,8 @@ sys.out content
 <div class="highlight"><pre><span></span><code>$get.bfile
 
 # Build a log path and append
-log_path = bfile.joinpath(local, &quot;logs&quot;, &quot;run.log&quot;)
-bfile.append(log_path, &quot;Startup complete\n&quot;)
+log_path = bfile.joinpath(local, "logs", "run.log")
+bfile.append(log_path, "Startup complete\n")
 </code></pre></div>
 <hr />
 <h2 id="error-handling-patterns">Error Handling Patterns</h2>
@@ -1643,10 +1643,10 @@ bfile.append(log_path, &quot;Startup complete\n&quot;)
 <p><strong>Recommended defensive pattern — check before acting:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-config = local + &quot;/config.txt&quot;
+config = local + "/config.txt"
 
 if !bfile.exists(config)
-    sys.out &quot;Error: config.txt not found&quot;
+    sys.out "Error: config.txt not found"
     void.0
 end.if
 
@@ -1656,13 +1656,13 @@ sys.out data
 <p><strong>Recommended pattern — validate before write:</strong></p>
 <div class="highlight"><pre><span></span><code>$get.bfile
 
-out_dir = bfile.joinpath(local, &quot;output&quot;)
+out_dir = bfile.joinpath(local, "output")
 
 if !bfile.isdir(out_dir)
     bfile.mkdir(out_dir)
 end.if
 
-bfile.writefile(bfile.joinpath(out_dir, &quot;result.txt&quot;), &quot;done&quot;)
+bfile.writefile(bfile.joinpath(out_dir, "result.txt"), "done")
 </code></pre></div>
 <p><strong>Debugging failed operations:</strong></p>
 <p>Run with the <code>--debug</code> flag to receive full stack traces and error context:</p>
@@ -1736,7 +1736,7 @@ bfile.writefile(bfile.joinpath(out_dir, &quot;result.txt&quot;), &quot;done&quot
       <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
