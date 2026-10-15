@@ -1,11 +1,12 @@
+
 site_name: Bolt Runtime Engine Documentation
 site_description: Official documentation for the Bolt programming language
 site_author: Swifteex Studio
 
-site_url: https://https://boltdocumentation.vercel.app/
+site_url: https://boltdocumentation.vercel.app/
 
-docs_dir: main
-site_dir: site
+docs_dir: main/docs
+site_dir: main/site
 
 use_directory_urls: true
 
@@ -52,3 +53,4 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.tabbed
   - pymdownx.details
+
